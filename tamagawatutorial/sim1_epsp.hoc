@@ -1,0 +1,50 @@
+/*simulation1*/
+create dend1, soma1, axon1
+
+connect dend1(1), soma1(0)
+connect soma1(1), axon1(0)
+
+dend1{
+	L = 20
+	diam = 20
+	nseg = 9
+
+	/*passive*/
+	insert pas
+		e_pas = -65
+}
+
+soma1{
+	L = 20
+	diam = 20
+	nseg = 9
+
+	/*passive*/
+	insert pas
+		e_pas = -65
+	/*accitive*/
+	insert hh
+}
+
+axon1{
+	L = 300
+	diam = 10
+	nseg = 9
+
+	/*passive*/
+	insert pas
+		e_pas = -65
+	/*accitive*/
+	insert hh
+}
+
+/*input*/
+    objectvar AlphaStim
+	dend1 AlphaStim = new AlphaSynapse(0.5)
+	AlphaStim.onset = 5
+	AlphaStim.gmax = 0.05
+	AlphaStim.tau = 0.3
+	AlphaStim.e = 0
+
+
+
